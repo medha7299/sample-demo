@@ -1,20 +1,20 @@
-pipeline{
-  agent any
+pipeline {
+    agent any
 
-  stages{
+    stages {
 
-    stage('Clone'){
-      steps{
-        git url: 'https://github.com/medha7299/sample-demo.git',
-          branch: 'main'
-      }
+        stage('Clone') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/medha7299/sample-demo.git'
+            }
+        }
+
+        stage('Run Script') {
+            steps {
+                sh 'chmod +x script.sh'
+                sh './script.sh'
+            }
+        }
     }
-
-    stage('Run Script'){
-      steps{
-        sh 'chmod +x script.sh'
-        sh './script.sh'
-      }
-    }
-  }
 }
